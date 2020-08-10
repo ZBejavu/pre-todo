@@ -61,6 +61,7 @@ function removeFromLocalStorage(base, task) {
   }
   console.log(outerTask);
   local = local.replace(outerTask, "");
+  local = local.replace(task.outerHTML, "");
   localStorage.setItem(base, local);
 }
 
