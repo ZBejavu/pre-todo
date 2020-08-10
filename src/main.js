@@ -50,7 +50,17 @@ function addToLocalStorage(target, task) {
 
 function removeFromLocalStorage(base, task) {
   let local = localStorage.getItem(base);
-  local = local.replace(task.outerHTML, "");
+  // getting search span
+  let myHighlight = task.getElementsByClassName('highlight')[0];
+  console.log(task);
+  console.log(task.outerHTML);
+  let outerTask = task.outerHTML;
+  // if there is one, replace it with its inner text.
+  if(myHighlight){
+    outerTask = outerTask.replace(myHighlight.outerHTML, myHighlight.innerText);
+  }
+  console.log(outerTask);
+  local = local.replace(outerTask, "");
   localStorage.setItem(base, local);
 }
 
